@@ -10,6 +10,7 @@ public class QuickSort extends MSort {
     private void Quick_Sort(int[] nums, int l, int r) {
         if (l < r) {
             int flag = NUMS[l];
+
             int i = l, j = r;
             while (i < j) {
                 while (i < j && flag <= NUMS[j]) {
@@ -37,3 +38,7 @@ public class QuickSort extends MSort {
         new QuickSort().test();
     }
 }
+
+/*
+    快速排序递归排序指定一个位置并选取该位置元素为标准遍历区间将大于小于该数的元素分别置于两端
+ */

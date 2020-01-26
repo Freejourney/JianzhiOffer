@@ -64,4 +64,4 @@ public class MergeSort extends MSort {
     }
 }
 
-// ① 划分
+// 归并排序先递归至最小区间再自下而上分组排序
