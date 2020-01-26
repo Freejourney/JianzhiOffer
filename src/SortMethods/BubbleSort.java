@@ -21,3 +21,7 @@ public class BubbleSort extends MSort {
         new BubbleSort().test();
     }
 }
+
+/*
+    冒泡排序每次内部循环找出最大(最小)的值放于一端
+ */

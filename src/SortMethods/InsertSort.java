@@ -26,3 +26,7 @@ public class InsertSort extends MSort {
         new InsertSort().test();
     }
 }
+
+/*
+    插入排序不断将后面的元素插入到前面有序序列中
+ */
