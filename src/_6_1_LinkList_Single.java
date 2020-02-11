@@ -304,6 +304,25 @@ public class _6_1_LinkList_Single {
         _6_1_LinkList_Single list = new _6_1_LinkList_Single(0);
         list.testFunctions();
 
+        int i =0;
+        SingleListNode node = list.head;
+        System.out.println(i + "  :  " + node.val);
+        while (node.next != null && i < 4) {
+            node = node.next;
+            i++;
+            System.out.println(i + "  :  " + node.val);
+        }
+
+        int j = 0;
+        SingleListNode node1 = list.head;
+        System.out.println(j + "  :  " + node1.val);
+        while (node1 != null && j < 4) {
+            node1 = node1.next;
+            j++;
+            System.out.println(j + "  :  " + node1.val);
+        }
+
+
 //        if (list.head == null)
 //            System.out.println("null");
 //        else
