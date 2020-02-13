@@ -5,31 +5,7 @@ import java.util.List;
  */
 public class _6_1_LinkList_Single {
 
-    public class SingleListNode {
-        int val;
-        SingleListNode next;
-        SingleListNode(int val) {
-            this.val = val;
-        }
-
-        public int getVal() {
-            return val;
-        }
-
-        public void setVal(int val) {
-            this.val = val;
-        }
-
-        public SingleListNode getNext() {
-            return next;
-        }
-
-        public void setNext(SingleListNode next) {
-            this.next = next;
-        }
-    }
-
-    private SingleListNode head;
+    public SingleListNode head;
 
     public _6_1_LinkList_Single(int val) {
         this.head = new SingleListNode(val);
@@ -51,8 +27,10 @@ public class _6_1_LinkList_Single {
 
     // Add tail
     public void addTail(int val) {
-        if (this.head == null)
-            throw new NullPointerException();
+        if (this.head == null) {
+            this.head = new SingleListNode(val);
+            return;
+        }
 
         SingleListNode node = this.head;
         while (node.next != null) {
@@ -267,6 +245,20 @@ public class _6_1_LinkList_Single {
 
     }
 
+    public SingleListNode getNthNode(int n) {
+        if (head == null) {
+            throw new NullPointerException();
+        }
+
+        int i = 1;
+        SingleListNode node = head;
+        while (node.next != null && i < n) {
+            node=node.next;
+            i++;
+        }
+        return node;
+    }
+
   // Traverse Single link list
     public void displayValues() {
         System.out.println("The current state of SingleLinkList : ");
@@ -291,7 +283,8 @@ public class _6_1_LinkList_Single {
 
 
     public void makeSingleList() {
-
+        for (int i = 1; i <= 10; i++)
+            addTail(i);
     }
 
     public void testFunctions() {
