@@ -131,6 +131,7 @@ public class _6_1_LinkList_Single {
         while (node1 != null) {
             if (node1.next == node) {
                 node1.next = node.next;
+                return;
             }
             node1 = node1.next;
         }
@@ -171,6 +172,30 @@ public class _6_1_LinkList_Single {
             }
         } else {
             throw new  IndexOutOfBoundsException();
+        }
+    }
+
+    public void deleteNode2(SingleListNode node) {
+        if (node == null) {
+            throw new NullPointerException();
+        }
+
+        if (node == head) {
+            head = head.next;
+            return;
+        }
+
+        // when node is not the last node
+        if (node.next != null) {
+            node.val = node.next.val;
+            node.next = node.next.next;
+        } else {
+            // Find the last 2th node
+            SingleListNode node1 = head;
+            while (node1.next.next != null) {
+                node1 = node1.next;
+            }
+            node1.next = node1.next.next;
         }
     }
 
