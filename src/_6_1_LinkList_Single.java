@@ -287,6 +287,11 @@ public class _6_1_LinkList_Single {
             addTail(i);
     }
 
+    public void makeSingleList(int n) {
+        for (int i = 1; i <= n; i++)
+            addTail(i);
+    }
+
     public void testFunctions() {
         displayValues();
 
