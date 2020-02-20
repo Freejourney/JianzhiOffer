@@ -4,6 +4,11 @@ public class InsertSort extends MSort {
 
     @Override
     public void test() {
+        insertSort();
+        display(NUMS);
+    }
+
+    public void insertSort_o() {
         for(int i = 1; i < NUMS.length; i++) {
             if (NUMS[i-1] > NUMS[i]) {
 
@@ -19,7 +24,21 @@ public class InsertSort extends MSort {
 
             }
         }
-        display(NUMS);
+    }
+
+    public void insertSort() {
+        for (int i = 1; i < NUMS.length; i++) {
+            // save current value aside
+            int insertValue = NUMS[i];
+
+            // move sorted array toward right until NUM[j] is not larger than insertValue
+            int j = i-1;
+            for (; j >= 0 && NUMS[j] > insertValue; j--) {
+                NUMS[j+1] = NUMS[j];
+            }
+
+            NUMS[j+1] = insertValue;
+        }
     }
 
     public static void main(String[] args) {

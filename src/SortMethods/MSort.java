@@ -2,7 +2,7 @@ package SortMethods;
 
 public abstract class MSort {
 
-    protected int[] NUMS = {1, 3, 2, 1, 4, 5, 0, 9, 8, 6, 7};
+    protected int[] NUMS = {1, 3, 2, 1, 4, 5, 0, 9, 8, 6, 7, 6, 0, 10, 12, 2};
     protected int[] NUMS2 ={1, 3, 2, 4, 5, 0, 9, 8, 6, 7};
 
     public abstract void test();
