@@ -12,6 +12,9 @@ public class BubbleSort extends MSort {
 
     /**
      * original bubbleSort()
+     * 最最基本的冒泡排序，不断比较相邻两个数的大小，如果相邻两个数不有序就将它们交换。
+     * 每次内部循环一次找出当前未有序列最大的数。
+     * 冒泡排序时间复杂度为O(n^2)
      * @param isAsc
      */
     public void bubbleSort(boolean isAsc) {
@@ -36,6 +39,7 @@ public class BubbleSort extends MSort {
 
     /**
      * optimized bubbleSort - prefix nums are already sorted
+     * 对前面的（左端）数字已经排序好了不用再进行循环了的优化
      * @param isAsc
      */
     public void bubbleSort_prefixSorted(boolean isAsc) {
@@ -66,6 +70,7 @@ public class BubbleSort extends MSort {
 
     /**
      *  Optimized BubbleSort() - Suffix nums are already sorted
+     * 对后端的（右端）数字已经排好序了（数组原本这部分就有序）的情况将数组有序部分纳入排序有序部分，下次遍历不再遍历该有序部分
      */
     public void bubbleSort_suffixSorted() {
         int bound = NUMS.length-1;
@@ -94,6 +99,7 @@ public class BubbleSort extends MSort {
      * In CockTailSort, exchange process starts from left to right, then from right back to left, repeats this process.
      *
      * CockTailSort can effectively decrease the times of exchanging while the majority numbers are sorted.
+     * 鸡尾酒排序，实际上就是冒泡排序来回交替遍历，从左往右，再从右往左。
      */
     public void cockTailSort() {
         int tmp = 0;
