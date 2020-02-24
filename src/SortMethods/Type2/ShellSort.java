@@ -1,4 +1,6 @@
-package SortMethods;
+package SortMethods.Type2;
+
+import SortMethods.MSort;
 
 /**
  * Created by ua28 on 2/20/20.

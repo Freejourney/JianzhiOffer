@@ -1,8 +1,8 @@
-package SortMethods;
+package SortMethods.Type2;
+
+import SortMethods.MSort;
 
 import java.util.*;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class QuickSort extends MSort {
     @Override
