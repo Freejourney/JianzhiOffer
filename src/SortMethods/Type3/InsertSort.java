@@ -1,4 +1,6 @@
-package SortMethods;
+package SortMethods.Type3;
+
+import SortMethods.MSort;
 
 public class InsertSort extends MSort {
 
