@@ -1,15 +1,18 @@
-package SortMethods;
+package SortMethods.Type2;
+
+import SortMethods.MSort;
 
 public class MergeSort extends MSort {
 
-    public static void mergeSort(int[] array) {
+    public void mergeSort(int[] array) {
         if (array == null || array.length == 0)
             return;
         int[] temp = new int[array.length];
         mergeSort(array, 0, array.length - 1, temp);
     }
+
     // 归并
-    private static void mergeSort(int array[], int first, int last, int temp[]) {
+    private void mergeSort(int array[], int first, int last, int temp[]) {
         if (first < last) {
             int mid = (first + last) / 2;
             mergeSort(array, first, mid, temp); // 递归归并左边元素
@@ -24,7 +27,7 @@ public class MergeSort extends MSort {
      * array[mid+1]~array[last]为第二组
      * temp[]为存放两组比较结果的临时数组
      */
-    private static void mergeArray(int array[], int first, int mid, int last, int temp[]) {
+    private void mergeArray(int array[], int first, int mid, int last, int temp[]) {
         int i = first, j = mid + 1; // i为第一组的起点, j为第二组的起点
         int m = mid, n = last; // m为第一组的终点, n为第二组的终点
 
@@ -53,15 +56,16 @@ public class MergeSort extends MSort {
         System.out.println();
     }
 
-    public static void main(String[] args) {
-        new MergeSort().test();
-    }
-
     @Override
     public void test() {
         mergeSort(NUMS2);
         display(NUMS2);
     }
+
+    public static void main(String[] args) {
+        new MergeSort().test();
+    }
+
 }
 
 // 归并排序先递归至最小区间再自下而上分组排序

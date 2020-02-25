@@ -1,5 +1,4 @@
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Tools {
@@ -41,4 +40,5 @@ public class Tools {
         // 3. collect elements and convert it into List<Integer>
         return Arrays.stream(nums).boxed().collect(Collectors.toList());
     }
+
 }
