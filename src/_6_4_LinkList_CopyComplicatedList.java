@@ -44,6 +44,51 @@ public class _6_4_LinkList_CopyComplicatedList {
         System.out.println("\nUse HashMap to Copy: ");
         ComplexListNode hashCopyedList = hashMapCopy(list);
         showComList(hashCopyedList);
+
+        System.out.println("\n Generate New Node in Original List: ");
+        ComplexListNode fissionCopyedList = fissionCopy(list);
+        showComList(fissionCopyedList);
+    }
+
+    /**
+     *  Space Complex Degree : O(1)     Time Complex Degree : O(n)
+     *
+     *  1. Traverse list to generate copied nodes on the basis of original list
+     *  2. Traverse list to set sibling pointers of new copied nodes
+     *  3. Traverse list to separate out new list
+     * @param head
+     * @return
+     */
+    public ComplexListNode fissionCopy(ComplexListNode head) {
+        if (head == null)
+            return null;
+
+        // generate copied node in original list next to original nodes
+        ComplexListNode node = head;
+        while (node != null) {
+            ComplexListNode nnode = new ComplexListNode(node.val);
+            nnode.next = node.next;
+            node.next = nnode;
+            node = node.next.next;
+        }
+
+        // make copied nodes point to relevant siblings
+        node = head;
+        while (node != null) {
+            if (node.sibling != null) {
+                node.next.sibling = node.sibling.next;
+            }
+            node = node.next.next;
+        }
+
+        // split copied list up
+        node = head.next;
+        while (node != null && node.next != null) {
+            node.next = node.next.next;
+            node = node.next;
+        }
+
+        return head.next;
     }
 
     /**
