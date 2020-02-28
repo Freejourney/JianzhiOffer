@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 /**
  * Created by ua28 on 2/11/20.
  */
@@ -35,11 +37,60 @@ public class _6_4_LinkList_CopyComplicatedList {
         ComplexListNode list = buildList();
         showComList(list);
 
-        ComplexListNode copyedList = directCopy(list);
-        showComList(copyedList);
+        System.out.println("\nUse Direct Traverse to Copy: ");
+        ComplexListNode directCopyedList = directCopy(list);
+        showComList(directCopyedList);
+
+        System.out.println("\nUse HashMap to Copy: ");
+        ComplexListNode hashCopyedList = hashMapCopy(list);
+        showComList(hashCopyedList);
     }
 
     /**
+     *  Space Complex Degree : O(n)(hashmap)     Time Complex Degree : O(n)
+     *  Use HashMap to Copy ComplexList
+     *      1. Traverse next pointers to organize basic structure
+     *          a) use a hashmap to save one to one pairs of original and new node
+     *      2. Traverse next pointers and use hashmap.get() to obtain corresponding sibling
+     *                                                  node(original sibling node linked the new copy node)
+     * @param head
+     * @return
+     */
+    public ComplexListNode hashMapCopy(ComplexListNode head) {
+        if (head == null)
+            return null;
+
+        ComplexListNode node = head;
+        ComplexListNode coNode = new ComplexListNode(node.val);
+        ComplexListNode coHead = coNode;
+
+        // save corresponding nodes to hashmap
+        HashMap<ComplexListNode, ComplexListNode> map = new HashMap<>();
+        map.put(node, coNode);
+        while (node.next != null) {
+            // generate basic structure
+            coNode.next = new ComplexListNode(node.next.val);
+            node = node.next;
+            coNode = coNode.next;
+            map.put(node, coNode);
+        }
+
+        // traverse again and set siblings
+        node = head;
+        coNode = coHead;
+        while (node != null) {
+            if (node.sibling != null) {
+                coNode.sibling = map.get(node.sibling);
+            }
+            node = node.next;
+            coNode = coNode.next;
+        }
+
+        return coHead;
+    }
+
+    /**
+     * Space Complex Degree : O(1)     Time Complex Degree : O(n^2)
      * Direct Traverse to Copy Original List
      * Traverse 2 pointers to copy nodes:
      *              (1) Traverse next pointer to copy and link every node
