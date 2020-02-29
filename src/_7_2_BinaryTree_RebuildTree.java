@@ -3,6 +3,14 @@
  */
 public class _7_2_BinaryTree_RebuildTree {
 
+    /**
+     * master
+     * @param preorder
+     * @param inorder
+     * @param length
+     * @return
+     * @throws Exception
+     */
     public BinaryTreeNode Construct(int[] preorder, int[] inorder, int length) throws Exception {
         if (preorder == null || inorder == null || length <= 0)
             return null;
@@ -10,6 +18,17 @@ public class _7_2_BinaryTree_RebuildTree {
         return ConstructCore(preorder, 0, preorder.length-1, inorder, 0, inorder.length-1);
     }
 
+    /**
+     * core
+     * @param preorder
+     * @param preStartIndex
+     * @param preEndIndex
+     * @param inorder
+     * @param inStartIndex
+     * @param inEndIndex
+     * @return
+     * @throws Exception
+     */
     public BinaryTreeNode ConstructCore(int[] preorder, int preStartIndex, int preEndIndex, int[] inorder, int inStartIndex, int inEndIndex) throws Exception {
         int rootValue = preorder[preStartIndex];
         BinaryTreeNode root = new BinaryTreeNode(rootValue);
