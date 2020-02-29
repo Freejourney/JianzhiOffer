@@ -17,6 +17,8 @@ public class _6_6_LinkList_ReverseList {
             return null;
 
         SingleListNode node = head;
+
+        // Traverse LinkedList and save all nodes into List
         List<SingleListNode> nodelist = new ArrayList<>();
         nodelist.add(new SingleListNode(node.val));
         while (node.next != null) {
@@ -31,22 +33,32 @@ public class _6_6_LinkList_ReverseList {
         return nodelist.get(nodelist.size()-1);
     }
 
+    /**
+     * Space Complex Degree : O(1)      Time Complex Degree : O(n)
+     * Three pointers save pre-node , cur-node and next node to reverse direction of list
+     * @param head
+     * @return
+     */
     public SingleListNode reverseList_Pointers(SingleListNode head) {
         if (head == null) {
             return null;
         }
 
+        // initial condition
         SingleListNode prenode = null;
         SingleListNode curnode = head;
-        SingleListNode nextnode = head.next;
         while (curnode != null) {
-            nextnode = curnode.next;
+            // save next node
+            SingleListNode nextnode = curnode.next;
+            // adjust direction
             curnode.next = prenode;
+
+            // iterate
             prenode = curnode;
             curnode = nextnode;
         }
 
-        return curnode;
+        return prenode;
     }
 
     /**
@@ -106,7 +118,7 @@ public class _6_6_LinkList_ReverseList {
 
         showList(reverseList_NewList(list));
         showList(reverseList(list));
-//        showList(reverseList_Pointers(list));
+        showList(reverseList_Pointers(buildList()));
     }
 
     public static void main(String[] args) {
