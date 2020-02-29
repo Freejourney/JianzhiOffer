@@ -1,7 +1,53 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by ua28 on 2/11/20.
  */
 public class _6_6_LinkList_ReverseList {
+
+    /**
+     *  Space Complex Degree : O(n), Time Complex Degree : O(n)
+     *  Copy nodes of list to List and use index to link them reversely
+     * @param head
+     * @return
+     */
+    public SingleListNode reverseList_NewList(SingleListNode head) {
+        if (head == null)
+            return null;
+
+        SingleListNode node = head;
+        List<SingleListNode> nodelist = new ArrayList<>();
+        nodelist.add(new SingleListNode(node.val));
+        while (node.next != null) {
+            node = node.next;
+            nodelist.add(new SingleListNode(node.val));
+        }
+
+        for (int i = nodelist.size()-1; i >= 1; i--) {
+            nodelist.get(i).next = nodelist.get(i-1);
+        }
+
+        return nodelist.get(nodelist.size()-1);
+    }
+
+    public SingleListNode reverseList_Pointers(SingleListNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        SingleListNode prenode = null;
+        SingleListNode curnode = head;
+        SingleListNode nextnode = head.next;
+        while (curnode != null) {
+            nextnode = curnode.next;
+            curnode.next = prenode;
+            prenode = curnode;
+            curnode = nextnode;
+        }
+
+        return curnode;
+    }
 
     /**
      * Space Complex Degree : O(1)      Time Complex Degree : O(n)
@@ -58,7 +104,9 @@ public class _6_6_LinkList_ReverseList {
         SingleListNode list = buildList();
         showList(list);
 
+        showList(reverseList_NewList(list));
         showList(reverseList(list));
+//        showList(reverseList_Pointers(list));
     }
 
     public static void main(String[] args) {
