@@ -80,7 +80,7 @@ public class _7_4_BinaryTree_SubStructureofTree {
     }
 
     public void test() {
-        System.out.println(hasSubtree(buildTree1(), buildTree2()));
+        System.out.print(hasSubtree(buildTree1(), buildTree2()));
     }
 
     public static void main(String[] args) {
