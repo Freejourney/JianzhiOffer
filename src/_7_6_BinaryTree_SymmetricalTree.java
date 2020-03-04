@@ -71,6 +71,39 @@ public class _7_6_BinaryTree_SymmetricalTree {
         return true;
     }
 
+    /**
+     * Master and Core to constuct recursive structure.
+     * Convey the same tree at the same time to recursively traverse.
+     * @param root
+     * @return
+     */
+    public boolean isSymmetrical_Recursive(BinaryTreeNode root) {
+        return isSymmetrical_Recursive(root, root);
+    }
+
+    /**
+     * Only compare two nodes once a time
+     * Recursively compare left and right nodes of the root
+     * @param roo1
+     * @param root2
+     * @return
+     */
+    public boolean isSymmetrical_Recursive(BinaryTreeNode roo1, BinaryTreeNode root2) {
+        if (roo1 == null && root2 == null) {
+            return true;
+        }
+
+        if (roo1 == null || root2 == null) {
+            return false;
+        }
+
+        if (roo1.val != root2.val) {
+            return false;
+        }
+
+        return isSymmetrical_Recursive(roo1.left, root2.right) && isSymmetrical_Recursive(roo1.right, root2.left);
+    }
+
     public BinaryTreeNode buildTree() {
         BinaryTreeNode root = new BinaryTreeNode(0);
 
@@ -89,7 +122,9 @@ public class _7_6_BinaryTree_SymmetricalTree {
     }
 
     public void test() {
-        System.out.println(isSymmetricalTree(buildTree()));
+        BinaryTreeNode root = buildTree();
+        System.out.println(isSymmetricalTree(root));
+        System.out.println(isSymmetrical_Recursive(root, root));
     }
 
     public static void main(String[] args) {
