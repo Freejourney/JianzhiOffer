@@ -6,6 +6,10 @@ import java.util.Queue;
  */
 public class _7_5_BinaryTree_MirrorTree {
 
+    /**
+     * To make a mirror of a binary tree, it's actually exchange left child with right child from root to leaves.
+     * @param root
+     */
     public void mirrorRecursively(BinaryTreeNode root) {
         if (root == null)
             return;
@@ -24,7 +28,11 @@ public class _7_5_BinaryTree_MirrorTree {
             mirrorRecursively(root.right);
     }
 
-
+    /**
+     * use Queue to implement level-sequence output
+     * use count way to implement line feeds at correct places
+     * @param root
+     */
     public void showTree(BinaryTreeNode root) {
         Queue<BinaryTreeNode> queue = new LinkedList<>();
         queue.add(root);
