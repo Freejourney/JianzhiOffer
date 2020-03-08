@@ -38,6 +38,11 @@ public class _7_11_BinaryTree_PathSumValue implements TreeTest {
         return paths;
     }
 
+    /**
+     * initial work
+     * @param root
+     * @param expectedSum
+     */
     public void FindPath(BinaryTreeNode root, int expectedSum) {
         if (root == null)
             return;
@@ -47,6 +52,15 @@ public class _7_11_BinaryTree_PathSumValue implements TreeTest {
         FindPath(root, expectedSum, path, currentSum);
     }
 
+    /**
+     * For recurisive method, fallback is not necessary.
+     * Same initial parameters are transferred into functions, and in the following recurisively transfers, currentSum
+     * will gradually increase from small to big for every situation
+     * @param root
+     * @param expectedSum
+     * @param path
+     * @param currentSum
+     */
     private void FindPath(BinaryTreeNode root, int expectedSum, List<Integer> path, int currentSum) {
         currentSum += root.val;
         path.add(root.val);
