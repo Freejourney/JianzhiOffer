@@ -6,6 +6,34 @@ import java.util.List;
  */
 public class _7_12_BinaryTree_BSTDLL implements TreeTest{
 
+    private List<BinaryTreeNode> nodes = new ArrayList<>();
+
+    public BinaryTreeNode Convert(BinaryTreeNode root) {
+        BinaryTreeNode lastNode = new BinaryTreeNode(0);
+        ConvertNode(root, lastNode);
+
+        BinaryTreeNode tnode = lastNode;
+        while (tnode.left != null)
+            tnode = tnode.left;
+
+        return tnode;
+    }
+
+    private void ConvertNode(BinaryTreeNode root, BinaryTreeNode lastNode) {
+        if (root == null)
+            return;
+
+        ConvertNode(root.left, lastNode);
+
+        BinaryTreeNode currentNode = root;
+        currentNode.left = lastNode;
+        lastNode.right = currentNode;
+        lastNode = currentNode;
+        nodes.add(lastNode);
+
+        ConvertNode(root.right, lastNode);
+    }
+
     /**
      * Inorder Traverse + List Traverse
      * @param root
@@ -62,6 +90,14 @@ public class _7_12_BinaryTree_BSTDLL implements TreeTest{
     public void test() {
         BinaryTreeNode node = transferBSTtoDLL(buildTree());
         BinaryTreeNode cur = node;
+        while (cur != null) {
+            System.out.print(cur.val+" ");
+            cur = cur.right;
+        }
+        System.out.println();
+
+        BinaryTreeNode tnode = Convert(buildTree());
+        cur = tnode;
         while (cur != null) {
             System.out.print(cur.val+" ");
             cur = cur.right;
