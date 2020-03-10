@@ -71,10 +71,13 @@ public class _7_13_BinarySe_Deserialize implements TreeTest {
     }
 
     @Override
-    public void test() throws IOException {
+    public void test() {
 
-        System.out.println(Serialize(buildTree()));
-
+        try {
+            System.out.println(Serialize(buildTree()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) throws IOException {

@@ -28,6 +28,19 @@ public class _7_14_BinaryTree_KthNode implements TreeTest {
         Inorder(root.right, k);
     }
 
+    private int l = 0;
+    private int testInorder(BinaryTreeNode root, int i) {
+
+        if (root.left != null)
+            i = testInorder(root.left, i) + 1;
+        l++;
+//        i++;
+        if (root.right != null)
+            i = testInorder(root.right, i) + 1;
+
+        return i;
+    }
+
     @Override
     public BinaryTreeNode buildTree() {
         BinaryTreeNode root = new BinaryTreeNode(5);
@@ -52,6 +65,10 @@ public class _7_14_BinaryTree_KthNode implements TreeTest {
     public void test() {
         kthNode(buildTree(), 3);
         System.out.println(this.node.val);
+
+        int i = 0;
+        i = testInorder(buildTree(), i) + 1;
+        System.out.println(this.l+"----"+i);
     }
 
     public static void main(String[] args) {
