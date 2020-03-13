@@ -124,16 +124,34 @@ public class _7_1_BinaryTree {
         return result;
     }
 
+    /**
+     * get the number of nodes in this tree
+     * @param root
+     * @return
+     */
+    public int getNodesNum(BinaryTreeNode root) {
+        if (root == null)
+            return 0;
 
+        int left = getNodesNum(root.left);
+        int right = getNodesNum(root.right);
+
+        return left+right+1;
+    }
 
 
     public void test() {
         BinaryTreeNode node1 = new BinaryTreeNode(1);
         BinaryTreeNode node2 = new BinaryTreeNode(2);
         BinaryTreeNode node3 = new BinaryTreeNode(3);
+        BinaryTreeNode node4 = new BinaryTreeNode(4);
+        BinaryTreeNode node5 = new BinaryTreeNode(5);
 
         node1.right = node2;
         node2.left = node3;
+
+        node3.left = node4;
+        node4.left = node5;
 
         System.out.print("preorder_rec : ");
         preorderTraverse(node1);
@@ -163,6 +181,8 @@ public class _7_1_BinaryTree {
         for (int i : list1)
             System.out.print(i+" ");
         System.out.println();
+
+        System.out.println("There are "+getNodesNum(node1)+" nodes in this tree.");
     }
 
 
