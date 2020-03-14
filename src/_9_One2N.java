@@ -5,7 +5,7 @@ import java.util.Arrays;
  */
 public class _9_One2N {
 
-    private int line = 10;
+    private int line = 50;
 
     public void printNums(int n) {
         if (n <= 0)
@@ -70,7 +70,7 @@ public class _9_One2N {
     }
 
     public void test() {
-        printNums(2);
+        printNums(4);
     }
 
     public static void main(String[] args) {
