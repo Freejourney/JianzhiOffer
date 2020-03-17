@@ -3,6 +3,10 @@
  */
 public class _13_MoveOddEvenNumbers {
 
+    /**
+     * Two Pointer Method to Move Elements
+     * @param arr
+     */
     public void moveOddEvenNumbers(int[] arr) {
         int left = 0, right = arr.length-1;
 
