@@ -15,7 +15,7 @@ public class _15_FindNumFron2DArray {
      *      for left: col--, arr[row][col] > num
      *      for down: row++, arr[row][col] < num
      *
-     *      boundary is row and col (col>=0 row<=rows)
+     ****** boundary is row and col (col>=0 row<=rows)
      *
      * @param num
      * @return
@@ -36,9 +36,27 @@ public class _15_FindNumFron2DArray {
       return false;
     }
 
+    public boolean hasNum_leftDownCorner(int num) {
+        int row = arr.length-1;
+        int col = 0;
+
+        while (row>=0 && col<=arr[0].length-1) {
+            if (arr[row][col] == num)
+                return true;
+            else if (arr[row][col] > num)
+                row--;
+            else
+                col++;
+        }
+
+        return false;
+    }
+
     public void test() {
         System.out.println(hasNum(7));
         System.out.println(hasNum(5));
+
+        System.out.println(hasNum_leftDownCorner(1));
     }
 
     public static void main(String[] args) {
