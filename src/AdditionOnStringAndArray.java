@@ -90,6 +90,154 @@ public class AdditionOnStringAndArray {
     }
 
     /**
+     * 实现了超过两位数的加法运算
+     */
+    public void additionNumberMoreThanTwo_1() {
+        char[] cnum1 = new char[]{'1', '2', '3'};
+        char[] cnum2 = new char[]{'2', '2'};
+
+        int lastIndex1 = cnum1.length-1;
+        int lastIndex2 = cnum2.length-1;
+
+        int len = lastIndex1 > lastIndex2 ? lastIndex1+1 : lastIndex2+1;
+
+        // 用额外空间暂存
+        char[] result = new char[len];
+
+        Arrays.fill(result, '0');
+
+        int lastIndexR = len-1;
+
+        // 第一步：计算最后一位（不用考虑进位）
+        result[lastIndexR] = (char) (cnum1[lastIndex1] + cnum2[lastIndex2] - '0');
+
+        lastIndexR--;
+        lastIndex1--;
+        lastIndex2--;
+
+        // 第二步：计算其余位
+        result[lastIndexR] = (char) (cnum1[lastIndex1] + cnum2[lastIndex2] - '0');
+
+        for (char e : result)
+            System.out.print(e);
+    }
+
+    /**
+     * 实现了超过两位数的加法运算
+     */
+    public void additionNumberMoreThanTwo_2() {
+        char[] cnum1 = new char[]{'1', '9', '8', '9'};
+        char[] cnum2 = new char[]{'1', '1'};
+
+        int lastIndex1 = cnum1.length-1;
+        int lastIndex2 = cnum2.length-1;
+
+        int carry = 0;
+
+        int len = lastIndex1 > lastIndex2 ? lastIndex1+1 : lastIndex2+1;
+        // 需要注意的是最大一位可能进位，所以长度加1
+        len += 1;
+
+        // 用额外空间暂存
+        char[] result = new char[len];
+
+        Arrays.fill(result, '0');
+
+        int lastIndexR = len-1;
+
+        // 第一步：计算最后一位（不用考虑进位）
+        int t = (cnum1[lastIndex1] - '0' + cnum2[lastIndex2] - '0');
+        if (t >= 10) {
+            carry = 1;
+            t -= 10;
+        }
+        result[lastIndexR] = (char) (t+'0');
+
+        lastIndexR--;
+        lastIndex1--;
+        lastIndex2--;
+
+        // 第二步：计算其余位
+        while (carry != 0 || lastIndex1 >= 0 || lastIndex2 >= 0) {
+            if (lastIndex1 >= 0 && lastIndex2 >= 0)
+                t = (cnum1[lastIndex1] - '0' + cnum2[lastIndex2] - '0' + carry);
+            else if (lastIndex1 >= 0 && lastIndex2 < 0)
+                t = (cnum1[lastIndex1] - '0' + carry);
+            else if (lastIndex2 >= 0 && lastIndex1 < 0)
+                t = (cnum1[lastIndex2] - '0' + carry);
+            else
+                t = carry;
+            if (t >= 10) {
+                carry = 1;
+                t -= 10;
+            } else
+                carry = 0;
+
+            result[lastIndexR] = (char) (t+'0');
+
+            lastIndexR--;
+            lastIndex1--;
+            lastIndex2--;
+        }
+
+        for (char e : result)
+            System.out.print(e);
+        System.out.println();
+
+        print(result);
+    }
+
+    /**
+     * 实现了超过两位数的加法运算，整理后第一步可以省略
+     * @param cnum1
+     * @param cnum2
+     * @return
+     */
+    public char[] additionNumberMoreThanTwo_3(char[] cnum1, char[] cnum2) {
+
+        int lastIndex1 = cnum1.length-1;
+        int lastIndex2 = cnum2.length-1;
+
+        int carry = 0;
+
+        int len = lastIndex1 > lastIndex2 ? lastIndex1+1 : lastIndex2+1;
+        // 需要注意的是最大一位可能进位，所以长度加1
+        len += 1;
+        // 用额外空间暂存
+        char[] result = new char[len];
+
+        Arrays.fill(result, '0');
+
+        int lastIndexR = len-1;
+
+        int t;
+        // 计算每一位,将第一步省略
+        while (carry != 0 || lastIndex1 >= 0 || lastIndex2 >= 0) {
+            if (lastIndex1 >= 0 && lastIndex2 >= 0)
+                t = (cnum1[lastIndex1] - '0' + cnum2[lastIndex2] - '0' + carry);
+            else if (lastIndex1 >= 0 && lastIndex2 < 0)
+                t = (cnum1[lastIndex1] - '0' + carry);
+            else if (lastIndex2 >= 0 && lastIndex1 < 0)
+                t = (cnum2[lastIndex2] - '0' + carry);
+            else
+                t = carry;
+            if (t >= 10) {
+                carry = 1;
+                t -= 10;
+            } else
+                carry = 0;
+
+            result[lastIndexR] = (char) (t+'0');
+
+            lastIndexR--;
+            lastIndex1--;
+            lastIndex2--;
+        }
+
+        return result;
+    }
+
+    /**
      * 前边的0不需要打印出来
      * @param arr
      */
@@ -106,7 +254,9 @@ public class AdditionOnStringAndArray {
     }
 
     public void test() {
-        additionOnString(8);
+//        additionOnString(8);
+//        additionNumberMoreThanTwo_2();
+        print(additionNumberMoreThanTwo_3(new char[]{'8', '9'}, new char[]{'8', '1', '1'}));
     }
 
     public static void main(String[] args) {
