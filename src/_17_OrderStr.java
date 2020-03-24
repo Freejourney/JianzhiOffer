@@ -41,8 +41,39 @@ public class _17_OrderStr {
         }
     }
 
+    /**
+     * 每个字符取或是不取
+     * @param chars
+     * @param begin
+     * @param len
+     * @param sb
+     */
+    public static void combinate(char[] chars,int begin,int len,StringBuffer sb){
+        // 长度取满
+        if(len==0){
+            System.out.println(sb);
+            return;
+        }
+        // 什么都不取
+        if(begin==chars.length)
+            return;
+
+        sb.append(chars[begin]);   //取当前字符
+        combinate(chars,begin+1,len-1,sb);
+
+        sb.deleteCharAt(sb.length()-1);  //不取当前字符
+        combinate(chars,begin+1,len,sb);
+    }
+
     public void test() {
-        orderStr(new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'});
+        orderStr(new char[]{'a', 'b', 'c'});
+
+        String str="abc";
+        char[] chars=str.toCharArray();
+        StringBuffer sb=new StringBuffer();
+        for(int i=1;i<=str.length();i++){
+            combinate(chars,0,i,sb);
+        }
     }
 
     public static void main(String[] args) {
