@@ -3,6 +3,8 @@
  */
 public class _17_OrderStr {
 
+    private int count = 0;
+
     public void orderStr(char[] str) {
         if (str == null)
             return;
@@ -18,6 +20,7 @@ public class _17_OrderStr {
      */
     private void orderStr(char[] str, int begin) {
         if (begin >= str.length) {
+            System.out.println(++count);
             for (char ch : str)
                 System.out.print(ch+" ");
             System.out.println();
@@ -39,7 +42,7 @@ public class _17_OrderStr {
     }
 
     public void test() {
-        orderStr(new char[]{'a', 'b', 'c'});
+        orderStr(new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'});
     }
 
     public static void main(String[] args) {
