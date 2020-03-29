@@ -10,6 +10,10 @@ public class InsertSort extends MSort {
         display(NUMS);
     }
 
+    /**
+     * 假设序列最前端是有序的，暂存当前数，将有序的数列逐个向后移动覆盖掉当前数，
+     * 待找到当前数应该在的位置时将暂存的当前数覆盖过去
+     */
     public void insertSort_o() {
         for(int i = 1; i < NUMS.length; i++) {
             if (NUMS[i-1] > NUMS[i]) {
@@ -28,6 +32,9 @@ public class InsertSort extends MSort {
         }
     }
 
+    /**
+     * 相同的意思不同的写法
+     */
     public void insertSort() {
         for (int i = 1; i < NUMS.length; i++) {
             // save current value aside

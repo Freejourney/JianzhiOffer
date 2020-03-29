@@ -7,6 +7,9 @@ import SortMethods.MSort;
  */
 public class SelectSort extends MSort {
 
+    /**
+     * 每次内层遍历找到序列中最小的数与其应该在的位置进行交换
+     */
     public void selectSort() {
         for (int i = 0; i < NUMS.length-1; i++) {
             int minIndex = i;
