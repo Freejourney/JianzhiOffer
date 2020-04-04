@@ -17,12 +17,14 @@ public class _18_MinKNum {
 
         for (int j = 0; j < k; j++) {
             int t = 0;
+            // 从未选取过的第一个下标开始
             while (set.contains(t))
                 t++;
             int min = arr[t];
             int index = t;
             for (int i = 0; i < arr.length; i++) {
                 if (min > arr[i]) {
+                    // 仅对为选取过的元素进行比较
                     if (!set.contains(i)) {
                         min = arr[i];
                         index = i;
@@ -32,6 +34,7 @@ public class _18_MinKNum {
             set.add(index);
         }
 
+        // 将集合添加到数组中去
         int[] result = new int[k];
         int t = 0;
         Iterator<Integer> iterator = set.iterator();

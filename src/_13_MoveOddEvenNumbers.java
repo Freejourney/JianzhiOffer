@@ -5,6 +5,9 @@ public class _13_MoveOddEvenNumbers {
 
     /**
      * Two Pointer Method to Move Elements
+     *
+     * 双指针，左边找偶数，右边找奇数，交换
+     *
      * @param arr
      */
     public void moveOddEvenNumbers(int[] arr) {

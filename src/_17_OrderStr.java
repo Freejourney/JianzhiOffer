@@ -15,15 +15,19 @@ public class _17_OrderStr {
     /**
      * 全排列：n*(n-1)*(n-2) ... *2*1
      *
+     * 逻辑上第一位有n种选择，第二位有n-1种选择 ... 最后一位只有一种选择
+     *
      * @param str
      * @param begin
      */
     private void orderStr(char[] str, int begin) {
         if (begin >= str.length) {
-            System.out.println(++count);
+            System.out.print(++count+" ");
             for (char ch : str)
                 System.out.print(ch+" ");
             System.out.println();
+
+            return;
         }
 
         // 模拟全排列选择过程
@@ -66,7 +70,7 @@ public class _17_OrderStr {
     }
 
     public void test() {
-        orderStr(new char[]{'a', 'b', 'c'});
+        orderStr(new char[]{'a', 'b', 'c', 'd', 'e'});
 
         String str="abc";
         char[] chars=str.toCharArray();
