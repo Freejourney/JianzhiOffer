@@ -12,6 +12,7 @@ public class _6_6_LinkList_ReverseList {
      * @param head
      * @return
      */
+
     public SingleListNode reverseList_NewList(SingleListNode head) {
         if (head == null)
             return null;

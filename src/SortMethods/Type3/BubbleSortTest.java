@@ -74,5 +74,23 @@ public class BubbleSortTest {
         new BubbleSortTest().suffixed_PrefixedBubbleSortClassic(nums);
 
         System.out.println(Arrays.toString(nums));
+
+        int bound = nums.length-1;
+        int lastExchangeIndex = bound;
+        for (int i = 0; i < nums.length; i++) {
+            boolean flag = true;
+            for (int j = 0; j < bound; j++) {
+                if (nums[j] > nums[j+1]) {
+                    nums[j] = nums[j] ^ nums[j + 1];
+                    nums[j + 1] = nums[j] ^ nums[j + 1];
+                    nums[j] = nums[j] ^ nums[j + 1];
+                    flag = false;
+                    lastExchangeIndex = j + 1;
+                }
+            }
+            bound = lastExchangeIndex;
+            if (flag)
+                break;
+        }
     }
 }
